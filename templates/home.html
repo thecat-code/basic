@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #84c3ec, #b734eb, #fbc2eb, #e70fdc);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        header button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        header button:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .slide-menu {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 300px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 20px;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+            transition: right 0.4s ease;
+            z-index: 15;
+        }
+
+        .slide-menu.open {
+            right: 0;
+        }
+
+        .slide-menu h2 {
+            margin-top: 0;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <button onclick="openMenu('help')">Help</button>
+        <button onclick="openMenu('about')">About</button>
+    </header>
+
+
+    <div id="slideMenu" class="slide-menu">
+        <span class="close-btn" onclick="closeMenu()">&times;</span>
+        <div id="menuContent"></div>
+    </div>
+    <h1>ST. Anthony Welcomes you</h1>
+    <script>
+        function openMenu(type) {
+            const menu = document.getElementById('slideMenu');
+            const content = document.getElementById('menuContent');
+            if (type === 'help') {
+                content.innerHTML = `<h2>Help</h2><p>You don't deserve any help</p>`;
+            } else if (type === 'about') {
+                content.innerHTML = `<h2>About</h2><p>This side is by bad boy</p>`;
+            }
+            menu.classList.add('open');
+        }
+
+        function closeMenu() {
+            document.getElementById('slideMenu').classList.remove('open');
+        }
+    </script>
+
+</body>
+</html>
