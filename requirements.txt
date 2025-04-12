@@ -1,0 +1,4 @@
+flask
+flask_mail
+werkzeug.security
+sqlite3
